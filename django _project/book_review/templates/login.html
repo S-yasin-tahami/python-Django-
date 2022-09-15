@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+   <head><title>login</title></head>
+   {% include 'header.html' %}
+   <body class="background">
+      <form id="login_form" action="" method="POST"> 
+         {% csrf_token %}     
+         <p class="lead">login to your account</p> 
+         <div class="form-group">
+            <br>
+            <div class="input-group">
+               <div class="input-group-text" id="basic-addon1"><i class="bi bi-people"></i></div>
+               <input type="text" name="username"  class="form-control" placeholder="Enter Your Username"required>
+            </div>  
+            <div>
+               {% if messages %}
+                  {% for message in messages %}        
+                     {% if 'username_message' in message.tags %}             
+                        <div class="text-danger" > {{message}} </div> 
+                     {% endif %}
+                  {% endfor %} 
+               {% endif %}
+            </div>
+         </div>  
+                  
+         <div class="form-group">
+            <br>
+            <div class="input-group">
+               <div class="input-group-text" id="basic-addon1"><i class="bi bi-key"></i></div>
+               <input type="password"  name="password" class="form-control" placeholder="Enter Your password" required>
+            </div>
+            <div>
+               {% if messages %}
+                  {% for message in messages %}        
+                     {% if 'password_message' in message.tags %}             
+                        <div class="text-danger" > {{message}} </div> 
+                     {% endif %}
+                  {% endfor %} 
+               {% endif %}
+            </div>
+         </div>
+
+         <br>
+         <button class="btn btn-outline-secondary" type="submit" name="login" value="login" >Login</button>
+         <div>
+            {% if messages %}
+               {% for message in messages %}        
+                  {% if 'welcome_message' in message.tags %}             
+                     <div class="text-warning text-center" > {{message}} </div> 
+                  {% endif %}
+               {% endfor %} 
+            {% endif %}
+         </div>
+      </form>
+   </body>
+</html>

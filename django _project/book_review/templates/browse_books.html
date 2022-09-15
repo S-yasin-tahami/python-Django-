@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head><title>Browse books</title></head>
+  {% include 'header.html' %}
+  <body class="background">
+    
+    {% for info in book_info %}
+      <div class="container justify-content-center books">
+        <div class="row">
+          <div class="col-7">
+            <div class="col">
+              <img src="{{info.cover.url}} " alt="cover" height="500px" width="350px"> 
+            </div>
+            <div class=" m-3 p-3">
+              <h5 class="text-secondary">name: </h5><p>{{info.name}}</p><br>
+              <h5 class="text-secondary">year: </h5><p> {{info.year}} </p><br>
+              <h5 class="text-secondary">author: </h5><p> {{info.author}} </p>
+              <a href="/add_comment/{{info.id}} " class="btn btn-secondary">Add comment</a> 
+            </div> 
+          </div>   
+        </div>
+      </div>
+    {% endfor %}
+
+  </body>
+</html>
